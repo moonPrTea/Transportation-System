@@ -1,7 +1,7 @@
 package models.Transport;
 
 public class Train extends Transport {
-    private Integer countCarriagies;
+    private Integer countCarriages;
 
     public Train(String model, String modelNumber, Double maxWeight, Double kmCost) {
         super(model, modelNumber, maxWeight, kmCost);
@@ -28,7 +28,9 @@ public class Train extends Transport {
         return TransportType.TRAIN;
     }
 
-    public Double avgCarriagiesWeigth() {
-        return maxWeight / countCarriagies;
+    public void setCountCarriages(Integer countCarriages) { this.countCarriages = countCarriages; }
+
+    public Double avgCarriagesWeight() {
+        return maxWeight / countCarriages;
     }
 }

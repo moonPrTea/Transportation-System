@@ -1,9 +1,6 @@
 import models.Cargo.Cargo;
 import models.Cargo.CargoType;
-import models.Transport.Plane;
-import models.Transport.Ship;
-import models.Transport.Train;
-import models.Transport.Transport;
+import models.Transport.*;
 import models.Transportation.Transportation;
 import repositories.TransportationRepository;
 
@@ -34,6 +31,9 @@ public class Main {
         printTransportInfo(exampleTrain, goodWeight, distance);
         printTransportInfo(exampleShip, goodWeight, distance);
 
+        exampleTrain.setCountCarriages(120);
+        System.out.printf("Avg carriage weight: %.2f\n", exampleTrain.avgCarriagesWeight());
+
         Cargo firstCargo = new Cargo("Dangerous cargo within additional information",
                 1200, 232323.01, CargoType.DANGEROUS);
         Cargo secondCargo = new Cargo("Lots of oil", 15000, 123242.32, CargoType.LIQUID);
@@ -61,6 +61,7 @@ public class Main {
         }
 
         System.out.printf("Total revenue: %.2f\n", transportationRepository.showTotalIncome());
+        System.out.printf("Completed Transportations: %.2f\n", transportationRepository.countCompletedTransportations());
     }
 
     private static void printTransportInfo(Transport transport, Double weight, Double distance) {
