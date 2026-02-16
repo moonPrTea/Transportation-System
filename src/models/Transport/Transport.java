@@ -18,6 +18,7 @@ public abstract class Transport {
                 model, modelNumber, maxWeight, kmCost);
     }
 
+    public abstract Double getAvgSpeed();
     public abstract Double getTripCost(Double kmCost, Double distance);
     public abstract TransportType getType();
 }

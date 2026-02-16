@@ -28,6 +28,9 @@ public class Train extends Transport {
         return TransportType.TRAIN;
     }
 
+    @Override
+    public Double getAvgSpeed() { return TransportType.TRAIN.getAvgSpeed(); }
+
     public void setCountCarriages(Integer countCarriages) { this.countCarriages = countCarriages; }
 
     public Double avgCarriagesWeight() {

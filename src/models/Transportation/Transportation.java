@@ -3,13 +3,15 @@ package models.Transportation;
 import models.Cargo.Cargo;
 import models.Transport.Transport;
 
+import java.util.Random;
+
 public class Transportation implements DeliveryProcess {
     private Integer id;
     private Cargo cargo;
     private Transport transport;
-    private Double distance;
     private Double transportationCost;
     private TransportationStatus status;
+    private CancellationReason canceledReason;
 
     public Transportation(Integer id, Cargo cargo, Transport transport, Double distance, Double transportationCost) {
         if (distance == null || distance <= 0) {
@@ -23,7 +25,6 @@ public class Transportation implements DeliveryProcess {
         this.id = id;
         this.cargo = cargo;
         this.transport = transport;
-        this.distance = distance;
         this.transportationCost = transportationCost;
         this.status = TransportationStatus.CREATED;
     }
@@ -61,11 +62,12 @@ public class Transportation implements DeliveryProcess {
     @Override
     public String toString() {
         return String.format(
-                "Cargo: %s, Transport: %s, Status: %s, Cost: %.2f",
+                "Cargo: %s, Transport: %s, Status: %s, Cost: %.2f, Cancellation reason: %s",
                 cargo.description(),
                 transport.getType(),
                 status,
-                transportationCost
+                transportationCost,
+                canceledReason != null ? canceledReason: "not found"
         );
     }
 
@@ -81,5 +83,20 @@ public class Transportation implements DeliveryProcess {
         return status;
     }
 
-    // TODO: add method to cancel transportation and check the damages and losses
+    public void cancelTransportation() {
+        this.status = TransportationStatus.CANCELED;
+
+        setRandomCancellationReason();
+    }
+
+    public void setRandomCancellationReason() {
+        Random random = new Random();
+
+        CancellationReason[] reasons = CancellationReason.values();
+        this.canceledReason = reasons[random.nextInt(reasons.length)];
+    }
+
+    public CancellationReason getCancellationReason() {
+        return this.canceledReason;
+    }
 }

@@ -20,4 +20,7 @@ public class Plane extends Transport{
     public TransportType getType() {
         return TransportType.PLANE;
     }
+
+    @Override
+    public Double getAvgSpeed() { return TransportType.PLANE.getAvgSpeed(); }
 }

@@ -33,6 +33,7 @@ public class Main {
 
         exampleTrain.setCountCarriages(120);
         System.out.printf("Avg carriage weight: %.2f\n", exampleTrain.avgCarriagesWeight());
+        System.out.printf("Avg train speed: %.2f\n", exampleTrain.getAvgSpeed());
 
         Cargo firstCargo = new Cargo("Dangerous cargo within additional information",
                 1200, 232323.01, CargoType.DANGEROUS);
@@ -46,6 +47,10 @@ public class Main {
         dangerousTransportation.startProcess();
         dangerousTransportation.endProcess();
         oilTransportation.startProcess();
+        oilTransportation.cancelTransportation();
+
+        System.out.printf("Transportation status and cancellation reason: %s, %s\n",
+                oilTransportation.getStatus(), oilTransportation.getCancellationReason());
 
         System.out.printf("Transportation is available: %b\n", perishableTransportation.checkAvailableTransportation());
 

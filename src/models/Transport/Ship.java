@@ -19,5 +19,8 @@ public class Ship extends Transport{
     public TransportType getType() {
         return TransportType.SHIP;
     }
+
+    @Override
+    public Double getAvgSpeed() { return TransportType.SHIP.getAvgSpeed(); }
 }
 
