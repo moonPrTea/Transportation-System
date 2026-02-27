@@ -1,7 +1,8 @@
-package repositories;
+package dev.moon.transportation.repositories;
 
-import models.Transportation.Transportation;
-import models.Transportation.TransportationStatus;
+import dev.moon.transportation.models.Transportation.Transportation;
+import dev.moon.transportation.models.Transportation.TransportationStatus;
+
 
 public class TransportationRepository<T extends Transportation> {
     private Repository<T> repository;

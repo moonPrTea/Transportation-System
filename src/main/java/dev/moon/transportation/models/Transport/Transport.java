@@ -1,4 +1,4 @@
-package models.Transport;
+package dev.moon.transportation.models.Transport;
 
 public abstract class Transport {
     protected String model;

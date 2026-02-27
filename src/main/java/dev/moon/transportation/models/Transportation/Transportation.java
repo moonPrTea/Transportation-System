@@ -1,7 +1,9 @@
-package models.Transportation;
+package dev.moon.transportation.models.Transportation;
 
-import models.Cargo.Cargo;
-import models.Transport.Transport;
+
+
+import dev.moon.transportation.models.Cargo.Cargo;
+import dev.moon.transportation.models.Transport.Transport;
 
 import java.util.Random;
 

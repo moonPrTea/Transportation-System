@@ -1,4 +1,4 @@
-package repositories;
+package dev.moon.transportation.repositories;
 
 import java.util.ArrayList;
 import java.util.List;

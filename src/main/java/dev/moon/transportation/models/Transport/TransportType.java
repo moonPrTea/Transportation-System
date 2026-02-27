@@ -1,4 +1,4 @@
-package models.Transport;
+package dev.moon.transportation.models.Transport;
 
 public enum TransportType {
     PLANE,

@@ -1,4 +1,4 @@
-package models.Cargo;
+package dev.moon.transportation.models.Cargo;
 
 public record Cargo (
     String description,

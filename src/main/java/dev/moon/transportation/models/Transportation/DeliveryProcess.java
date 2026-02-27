@@ -1,4 +1,4 @@
-package models.Transportation;
+package dev.moon.transportation.models.Transportation;
 
 public interface DeliveryProcess {
     void startProcess();

@@ -1,4 +1,4 @@
-package models.Transportation;
+package dev.moon.transportation.models.Transportation;
 
 public enum CancellationReason {
     TRANSPORT_BREAKDOWN("Transport breakdown"),

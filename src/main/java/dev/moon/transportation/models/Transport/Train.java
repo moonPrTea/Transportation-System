@@ -1,4 +1,4 @@
-package models.Transport;
+package dev.moon.transportation.models.Transport;
 
 public class Train extends Transport {
     private Integer countCarriages;

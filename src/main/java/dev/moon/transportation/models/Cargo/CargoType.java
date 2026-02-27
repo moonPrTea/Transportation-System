@@ -1,4 +1,4 @@
-package models.Cargo;
+package dev.moon.transportation.models.Cargo;
 
 public enum CargoType {
     DANGEROUS("dangerous cargo"),

@@ -1,6 +1,6 @@
-package models.Transport;
+package dev.moon.transportation.models.Transport;
 
-public class Ship extends Transport{
+public class Ship extends Transport {
 
     public Ship(String model, String modelNumber, Double maxWeight, Double kmCost) {
         super(model, modelNumber, maxWeight, kmCost);
