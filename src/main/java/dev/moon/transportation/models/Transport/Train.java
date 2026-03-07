@@ -1,17 +1,26 @@
 package dev.moon.transportation.models.Transport;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class Train extends Transport {
-    private Integer countCarriages;
+    private int countCarriages;
 
     public Train(String model, String modelNumber, Double maxWeight, Double kmCost) {
         super(model, modelNumber, maxWeight, kmCost);
     }
 
+    // Double can be replaced with BigDecimal
     @Override
     public Double getTripCost(Double goodWeight, Double distance) {
         if (goodWeight > maxWeight) {
             throw new IllegalArgumentException("Goods weight is overload");
         }
+
+        if (distance < 0) {
+            throw new IllegalArgumentException("Distance must be positive");
+        }
+
 
         double price = kmCost * distance;
 
@@ -20,7 +29,9 @@ public class Train extends Transport {
             price *= 0.88;
         }
 
-        return price;
+        return new BigDecimal(price)
+                .setScale(2, RoundingMode.FLOOR)
+                .doubleValue();
     }
 
     @Override
@@ -31,7 +42,17 @@ public class Train extends Transport {
     @Override
     public Double getAvgSpeed() { return TransportType.TRAIN.getAvgSpeed(); }
 
-    public void setCountCarriages(Integer countCarriages) { this.countCarriages = countCarriages; }
+    public void setCountCarriages(Integer countCarriages) {
+        if (countCarriages <= 0) {
+            this.countCarriages = 1;
+            return;
+        }
+        this.countCarriages = countCarriages;
+    }
+
+    public Integer getCountCarriages() {
+        return this.countCarriages;
+    }
 
     public Double avgCarriagesWeight() {
         return maxWeight / countCarriages;
