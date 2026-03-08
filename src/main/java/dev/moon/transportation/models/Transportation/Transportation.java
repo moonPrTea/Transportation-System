@@ -37,7 +37,7 @@ public class Transportation implements DeliveryProcess {
             throw new IllegalArgumentException("Can't start a completed transportation");
         }
         if (!checkAvailableTransportation()) {
-            throw new IllegalArgumentException("Traffic is busy now, can't start transportation");
+            throw new IllegalArgumentException("Transportation is already in process");
         }
 
         status = TransportationStatus.PROCESSING;
@@ -83,6 +83,10 @@ public class Transportation implements DeliveryProcess {
 
     public TransportationStatus getStatus() {
         return status;
+    }
+
+    public void setStatus(TransportationStatus status) {
+        this.status = status;
     }
 
     public void cancelTransportation() {

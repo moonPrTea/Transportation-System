@@ -1,5 +1,7 @@
 package dev.moon.transportation.models.Transport;
 
+import java.math.BigDecimal;
+
 public abstract class Transport {
     protected String model;
     protected String modelNumber;
@@ -11,11 +13,6 @@ public abstract class Transport {
         this.modelNumber = modelNumber;
         this.maxWeight = maxWeight;
         this.kmCost = kmCost;
-    }
-
-    public void transportInformation() {
-        System.out.printf("{\n\tModel: %s\n\tModel number: %s\n\tMax weight: %.3f\n\tkm cost: %.3f\n}\n",
-                model, modelNumber, maxWeight, kmCost);
     }
 
     public abstract Double getAvgSpeed();

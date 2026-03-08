@@ -17,8 +17,8 @@ public record Cargo (
             throw new IllegalArgumentException("Goods weight must be positive");
         }
 
-        if (type == null) {
-            throw new IllegalArgumentException("Cargo type can't be null");
+        if (goodsCount == null || goodsCount <= 0) {
+            throw new IllegalArgumentException("Goods count must be positive");
         }
     }
 }
