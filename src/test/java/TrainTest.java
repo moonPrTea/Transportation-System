@@ -17,14 +17,14 @@ public class TrainTest {
         train = new Train("Example Model", "Num123", 100000.00, 1400.00);
     }
 
-    // TODO: add assertions for exception messages
     @ParameterizedTest
     @CsvSource({
-            "111111.00, 1.00",
-            "12, -1.00"
+            "111111.00, 1.00, Goods weight is overload",
+            "12, -1.00, Distance must be positive"
     })
-    void shouldThrowExceptionIfWeightIsMoreThanMaxWeight(double goodWeight, double distance) {
-        assertThrows(IllegalArgumentException.class, () -> train.getTripCost(goodWeight, distance));
+    void shouldThrowExceptionIfWeightIsMoreThanMaxWeight(double goodWeight, double distance, String expectedMessage) {
+        var exception = assertThrows(IllegalArgumentException.class, () -> train.getTripCost(goodWeight, distance));
+        assertEquals(expectedMessage, exception.getMessage());
     }
 
     @ParameterizedTest

@@ -1,5 +1,8 @@
 package dev.moon.transportation.models.Transport;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class Plane extends Transport{
 
     // initializes transport fields
@@ -13,7 +16,15 @@ public class Plane extends Transport{
             throw new IllegalArgumentException("Goods weight is overload");
         }
 
-        return 2 * kmCost * distance;
+        if (distance < 0) {
+            throw new IllegalArgumentException("Distance must be positive");
+        }
+
+        return new BigDecimal(kmCost)
+                .multiply(BigDecimal.valueOf(distance))
+                .multiply(BigDecimal.valueOf(2))
+                .setScale(2, RoundingMode.FLOOR)
+                .doubleValue();
     }
 
     @Override

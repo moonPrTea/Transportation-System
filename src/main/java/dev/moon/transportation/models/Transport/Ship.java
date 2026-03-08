@@ -1,5 +1,8 @@
 package dev.moon.transportation.models.Transport;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class Ship extends Transport {
 
     public Ship(String model, String modelNumber, Double maxWeight, Double kmCost) {
@@ -12,7 +15,14 @@ public class Ship extends Transport {
             throw new IllegalArgumentException("Goods weight is overload");
         }
 
-        return kmCost * distance;
+        if (distance < 0) {
+            throw new IllegalArgumentException("Distance must be positive");
+        }
+
+        return new BigDecimal(kmCost)
+                .multiply(BigDecimal.valueOf(distance))
+                .setScale(2, RoundingMode.FLOOR)
+                .doubleValue();
     }
 
     @Override
